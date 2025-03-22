@@ -20,8 +20,21 @@ class _ListpjsState extends State<Listpjs> {
       child: ListView(
         children: [
           Text("Portadas", style: tituloStyletext),
+          Row(children: [bloquesPortada("p1.jpg", "titulo", "subtitulo")]),
         ],
       ),
+    );
+  }
+
+  Column bloquesPortada(String image, String titulo, String subtitulo) {
+    return Column(
+      //Almacena imagenes y peudes ponerle borde a las imgs
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(18),
+          child: Image.asset("assets/$image"),
+        ),
+      ],
     );
   }
 }
