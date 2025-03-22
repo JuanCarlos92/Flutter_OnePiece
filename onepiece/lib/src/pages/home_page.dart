@@ -13,13 +13,13 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Color.fromARGB(255, 16, 16, 16),
+      backgroundColor:  Color.fromARGB(255, 16, 16, 16),  // Fondo oscuro
       body: Column(
         children: <Widget>[
-          Headerwidget(),
-          Listpjs(),
+          Headerwidget(),  // Widget que contiene el encabezado
+          Listpjs(),  // Widget que muestra una lista de personajes o elementos
         ],
-      )
+      ),
     );
   }
 }
