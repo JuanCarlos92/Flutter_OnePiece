@@ -14,7 +14,7 @@ class Headerwidget extends StatelessWidget {
     return Container(
       alignment: Alignment.bottomCenter,
       padding: const EdgeInsets.all(25.0),
-      height: 170.0,
+      height: 120.0,
       decoration: BoxDecoration(color: Color.fromARGB(255, 41, 40, 39)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
