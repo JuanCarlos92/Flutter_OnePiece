@@ -7,7 +7,7 @@ class Listpjs extends StatefulWidget {
   }); // Constructor del widget que pasa la clave super.key
 
   @override
-  State<Listpjs> createState() => _ListpjsState(); // Crea el estado asociado a este widget
+  State<Listpjs> createState() => _ListpjsState();
 }
 
 // Clase privada que gestiona el estado del widget Listpjs
@@ -27,27 +27,30 @@ class _ListpjsState extends State<Listpjs> {
 
     return Expanded(
       // El widget Expanded asegura que este widget ocupe el espacio disponible
+      // Añadir un espaciado de 25 píxeles alrededor del ListView
       child: ListView(
-        padding: const EdgeInsets.all(
-          25,
-        ), // Añadir un espaciado de 25 píxeles alrededor del ListView
+        padding: const EdgeInsets.all(25),
         children: [
-          Text(
-            "Portadas",
-            style: tituloStyletext,
-          ), // Título de la sección "Portadas" con el estilo definido anteriormente
+          Text("Portadas", style: tituloStyletext),
+          const SizedBox(height: 15),
           Row(
             // Usamos un Row para organizar las imágenes horizontalmente
+            // Añadir un espacio entre las imágenes (3% del ancho de la pantalla)
             children: [
-              bloquesPortada("p1.jpg", "titulo", "subtitulo"),
-              SizedBox(
-                width: widthscreen * 0.03,
-              ), // Añadir un espacio entre las imágenes (3% del ancho de la pantalla)
-              bloquesPortada("p2.jpg", "titulo", "subtitulo"),
+              bloquesPortada("p1.jpg", "titulo: ", "2018"),
               SizedBox(width: widthscreen * 0.03),
-              bloquesPortada("p3.jpg", "titulo", "subtitulo"),
+              bloquesPortada("p2.jpg", "titulo: ", "2022"),
+              SizedBox(width: widthscreen * 0.03),
+              bloquesPortada("p3.jpg", "titulo: ", "2023"),
             ],
           ),
+          //Linea divisora (division)
+          const Divider(
+            thickness: 1, //da la altura
+            color: Colors.white,
+          ),
+          // Espacio debajo de la imagen de 20 píxeles
+          const SizedBox(height: 20),
         ],
       ),
     );
@@ -58,22 +61,38 @@ class _ListpjsState extends State<Listpjs> {
     return Column(
       children: [
         // ClipRRect para redondear las esquinas de la imagen
+        // Bordes redondeados con un radio de 18
         ClipRRect(
-          borderRadius: BorderRadius.circular(
-            18,
-          ), // Bordes redondeados con un radio de 18
+          borderRadius: BorderRadius.circular(18),
+          // Cargar la imagen desde la carpeta assets
           child: Image.asset(
-            "assets/$image", // Cargar la imagen desde la carpeta assets
-            width:
-                widthscreen *
-                0.31, // El ancho de la imagen será el 31% del ancho de la pantalla
-            height: 110, // Altura fija de 110 píxeles
-            fit:
-                BoxFit
-                    .cover, // Ajustar la imagen para que cubra completamente el contenedor sin distorsionar
+            "assets/$image",
+            // El ancho de la imagen será el 31% del ancho de la pantalla
+            // Altura fija de 110 píxeles
+            width: widthscreen * 0.31,
+            height: 110,
+            // Ajustar la imagen para que cubra completamente el contenedor sin distorsionar
+            fit: BoxFit.cover,
           ),
         ),
-        const SizedBox(height: 15), // Espacio debajo de la imagen de 15 píxeles
+        // Espacio debajo de la imagen de 15 píxeles
+        const SizedBox(height: 15),
+        RichText(
+          text: TextSpan(
+            text: titulo,
+            style: const TextStyle(color: Colors.white70, fontSize: 14),
+            children: [
+              TextSpan(
+                text: subtitulo,
+                style: const TextStyle(
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w300,
+                  fontSize: 10,
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }

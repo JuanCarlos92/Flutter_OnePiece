@@ -1,37 +1,40 @@
 import 'package:flutter/material.dart';
 
 class Headerwidget extends StatelessWidget {
-  const Headerwidget({super.key});  // Constructor del widget. "super.key" es necesario para los widgets que heredan de StatelessWidget
+  const Headerwidget({
+    super.key,
+  }); // Constructor del widget. "super.key" es necesario para los widgets que heredan de StatelessWidget
 
   // Estilo de texto para el título: color blanco, negrita, tamaño de fuente 26
   final tituloTextStyle = const TextStyle(
-    color: Colors.white, 
-    fontWeight: FontWeight.bold, 
-    fontSize: 26,  
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+    fontSize: 26,
   );
 
   // Estilo de texto para el subtítulo: color blanco, tamaño de fuente 17
-  final subtituloTextStyle = const TextStyle(
-    color: Colors.white,  
-    fontSize: 17,
-  );
+  final subtituloTextStyle = const TextStyle(color: Colors.white, fontSize: 17);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.bottomCenter,  // Alineación del contenido hacia la parte inferior y centrado
-      padding: const EdgeInsets.all(25.0),  // Espaciado interno de 25 píxeles alrededor del contenedor
-      height: 120.0,  // Altura del contenedor
-      decoration: BoxDecoration(
-        color: Color.fromARGB(255, 41, 40, 39),  // Fondo de color
-      ),
+      // Alineación del contenido hacia la parte inferior y centrado
+      alignment: Alignment.bottomCenter,
+      // Espaciado interno de 25 píxeles alrededor del contenedor
+      padding: const EdgeInsets.all(25.0),
+      height: 120.0, // Altura del contenedor
+      // Fondo de color
+      decoration: BoxDecoration(color: Color.fromARGB(255, 41, 40, 39)),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,  // Los elementos del Row se distribuyen con el máximo espacio entre ellos
+        // Los elementos del Row se distribuyen con el máximo espacio entre ellos
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           // Primera columna que contiene el título y subtítulo
           Column(
-            mainAxisSize: MainAxisSize.min,  // El tamaño de la columna se ajusta al contenido, no ocupa más espacio del necesario
-            crossAxisAlignment: CrossAxisAlignment.start,  // Alineación de los elementos dentro de la columna hacia la izquierda
+            // El tamaño de la columna se ajusta al contenido, no ocupa más espacio del necesario
+            mainAxisSize: MainAxisSize.min,
+            // Alineación de los elementos dentro de la columna hacia la izquierda
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("One piece", style: tituloTextStyle),
               Text("serie", style: subtituloTextStyle),
@@ -43,28 +46,35 @@ class Headerwidget extends StatelessWidget {
               // Primer contenedor
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),  // Bordes redondeados con radio de 15
-                  color: Colors.black.withOpacity(.1),  // Fondo negro con opacidad al 10%
+                  // Bordes redondeados con radio de 15
+                  borderRadius: BorderRadius.circular(15),
+                  // Fondo negro con opacidad al 10%
+                  color: Colors.black.withOpacity(.1),
                 ),
                 child: IconButton(
-                  icon: const Icon(Icons.search, size: 28, color: Colors.white),  // Icono de búsqueda de tamaño 28 y color blanco
-                  onPressed: () {},  // Acción del botón
+                  // Icono de búsqueda de tamaño 28 y color blanco
+                  icon: const Icon(Icons.search, size: 28, color: Colors.white),
+                  onPressed: () {}, // Acción del botón
                 ),
               ),
-              const SizedBox(width: 10),  // Espacio de 10 píxeles entre los botones
+              // Espacio de 10 píxeles entre los botones
+              const SizedBox(width: 10),
               // Segundo contenedor
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),  // Bordes redondeados con radio de 15
-                  color: Colors.black.withOpacity(.1),  // Fondo negro con opacidad al 10%
+                  // Bordes redondeados con radio de 15
+                  borderRadius: BorderRadius.circular(15),
+                  // Fondo negro con opacidad al 10%
+                  color: Colors.black.withOpacity(.1),
                 ),
                 child: IconButton(
+                  // Icono de notificaciones
                   icon: const Icon(
-                    Icons.notifications,  // Icono de notificaciones
+                    Icons.notifications,
                     size: 28,
                     color: Colors.white,
                   ),
-                  onPressed: () {},  // Acción del botón
+                  onPressed: () {}, // Acción del botón
                 ),
               ),
             ],
