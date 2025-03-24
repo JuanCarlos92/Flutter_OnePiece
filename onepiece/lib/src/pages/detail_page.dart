@@ -39,6 +39,8 @@ class DetailPage extends StatelessWidget {
                   child: SizedBox(height: 500, child: Image.asset(image)),
                 ),
                 Positioned(
+                  bottom: 10,
+                  left: 10,
                   child: BlurContainer(
                     child: Container(
                       width: 160,
@@ -47,7 +49,14 @@ class DetailPage extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Text(nombre),
+                      child: Text(
+                        nombre,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                   ),
                 ),
