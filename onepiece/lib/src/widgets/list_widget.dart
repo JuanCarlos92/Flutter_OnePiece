@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import "../pages/detail_page.dart";
 
 // Definición de un widget Stateful llamado Listpjs
 class Listpjs extends StatefulWidget {
-  const Listpjs({
-    super.key,
-  }); // Constructor del widget que pasa la clave super.key
+  const Listpjs({super.key});
 
   @override
   State<Listpjs> createState() => _ListpjsState();
@@ -25,16 +24,17 @@ class _ListpjsState extends State<Listpjs> {
     // Obtener el ancho de la pantalla actual y restar 50 píxeles para ajustarlo a los márgenes
     widthscreen = MediaQuery.of(context).size.width - 50;
 
+    // Expanded asegura que este widget ocupe el espacio disponible
     return Expanded(
-      // El widget Expanded asegura que este widget ocupe el espacio disponible
       // Añadir un espaciado de 25 píxeles alrededor del ListView
       child: ListView(
         padding: const EdgeInsets.all(25),
         children: [
           Text("Portadas", style: tituloStyletext),
           const SizedBox(height: 15),
+
+          // Row para organizar las imágenes horizontalmente
           Row(
-            // Usamos un Row para organizar las imágenes horizontalmente
             // Añadir un espacio entre las imágenes (3% del ancho de la pantalla)
             children: [
               bloquesPortada("p1.jpg", "titulo: ", "2018"),
@@ -45,13 +45,90 @@ class _ListpjsState extends State<Listpjs> {
             ],
           ),
           //Linea divisora (division)
-          const Divider(
-            thickness: 1, //da la altura
-            color: Colors.white,
-          ),
-          // Espacio debajo de la imagen de 20 píxeles
+          const Divider(thickness: 1, color: Colors.white),
+          // Espacio de 20 píxeles
           const SizedBox(height: 20),
+
+          bloquePersonajes("Brook", 0xff4913c4, "o1"),
+          bloquePersonajes("Luffy", 0xffF82A2D, "o2"),
+          bloquePersonajes("Portgas D. Ace", 0xffFFCB28, "o3"),
+          bloquePersonajes("Boa Hancock", 0xffFE4649, "o4"),
+          bloquePersonajes("Boa Hancock", 0xffDF1C6A, "o5"),
+          bloquePersonajes("Roronoa Zoro", 0xff21e295, "o6"),
         ],
+      ),
+    );
+  }
+
+  Widget bloquePersonajes(String nombre, int color, String imagen) {
+    //Detecta gestos
+    return GestureDetector(
+      onTap:
+          () => {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder:
+                    (context) => DetailPage(
+                      color: color,
+                      image: "assets/$imagen.png",
+                      nombre: nombre,
+                    ),
+              ),
+            ),
+          },
+      child: Container(
+        //margen 20 unidades en la parte de abajo para cada elemento
+        margin: EdgeInsets.only(bottom: 20),
+        //padding 20 unidaddes a la izq y drch
+        padding: EdgeInsets.symmetric(horizontal: 20),
+
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: Color.fromARGB(66, 92, 77, 77),
+        ),
+        height: 65,
+        child: Row(
+          // Espacio entre elementos
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+          children: [
+            Row(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    //Añadir sombras
+                    boxShadow: [
+                      //Difuminado -Desplazar sombra -Escalado de la sombra -Tipo de sombra
+                      BoxShadow(
+                        blurRadius: 8,
+                        offset: Offset(0, 5),
+                        //spreadRadius: 1,
+                        blurStyle: BlurStyle.normal,
+                        color: Color(color),
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding: EdgeInsets.all(8),
+                  child: Image.asset("assets/$imagen.png"),
+                ),
+
+                // Espacio de 12 píxeles
+                SizedBox(width: 12),
+
+                Text(
+                  nombre,
+                  style: const TextStyle(fontSize: 16, color: Colors.white),
+                ),
+              ],
+            ),
+            //Boton de 3 puntos
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.more_vert_rounded, color: Colors.grey),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -61,22 +138,23 @@ class _ListpjsState extends State<Listpjs> {
     return Column(
       children: [
         // ClipRRect para redondear las esquinas de la imagen
-        // Bordes redondeados con un radio de 18
         ClipRRect(
+          // Bordes redondeados con un radio de 18
           borderRadius: BorderRadius.circular(18),
-          // Cargar la imagen desde la carpeta assets
+          // Cargar la imagen desde la carpeta assets:
+          // Ancho img  31% del ancho de la pantalla, altura 110 px
+          // Ajustar la imagen cubra completamente el contenedor sin distorsionar
           child: Image.asset(
             "assets/$image",
-            // El ancho de la imagen será el 31% del ancho de la pantalla
-            // Altura fija de 110 píxeles
             width: widthscreen * 0.31,
             height: 110,
-            // Ajustar la imagen para que cubra completamente el contenedor sin distorsionar
             fit: BoxFit.cover,
           ),
         ),
-        // Espacio debajo de la imagen de 15 píxeles
+
+        // Espacio  de 15 píxeles
         const SizedBox(height: 15),
+
         RichText(
           text: TextSpan(
             text: titulo,

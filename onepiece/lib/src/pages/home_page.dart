@@ -13,12 +13,17 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Color.fromARGB(255, 16, 16, 16),  // Fondo oscuro
+      backgroundColor: Color.fromARGB(255, 16, 16, 16), // Fondo oscuro
       body: Column(
         children: <Widget>[
-          Headerwidget(),  // Widget que contiene el encabezado
-          Listpjs(),  // Widget que muestra una lista de personajes o elementos
+          Headerwidget(), // Widget que contiene el encabezado
+          Listpjs(), // Widget que muestra una lista de personajes o elementos
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color.fromARGB(255, 95, 25, 208),
+        onPressed: () {},
+        child: const Icon(Icons.add, color: Colors.white),
       ),
     );
   }
