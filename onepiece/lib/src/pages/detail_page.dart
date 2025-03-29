@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onepiece/src/widgets/blur_container.dart';
+import 'package:onepiece/src/widgets/infotitle_widget.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({
@@ -12,6 +13,7 @@ class DetailPage extends StatelessWidget {
   final int color;
   final String image;
   final String nombre;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +38,7 @@ class DetailPage extends StatelessWidget {
               children: [
                 Container(
                   padding: EdgeInsets.only(left: 12),
-                  child: SizedBox(height: 500, child: Image.asset(image)),
+                  child: SizedBox(height: 400, child: Image.asset(image)),
                 ),
                 Positioned(
                   bottom: 10,
@@ -61,6 +63,34 @@ class DetailPage extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Text(
+                "$nombre #personaje",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            const SizedBox(height: 5),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              child: Text("One piece", style: TextStyle(color: Colors.white70)),
+            ),
+            const SizedBox(height: 30),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Infotitle(title: "Eiichirõ Oda", subtitle: "Creador"),
+                  Infotitle(title: "Japón", subtitle: "País"),
+                ],
+              ),
             ),
           ],
         ),

@@ -11,10 +11,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      debugShowCheckedModeBanner: false,  // Desactiva la bandera de modo de depuración
-      title: "main",  // Título aplicación
-      home: Home(),  // La página principal es 'Home'
+      // Desactiva la bandera de modo de depuración
+      debugShowCheckedModeBanner: false,
+      title: "main",
+      home: Home(), // La página principal es 'Home'
     );
   }
 }
-
